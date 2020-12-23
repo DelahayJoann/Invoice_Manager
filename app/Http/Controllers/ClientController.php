@@ -17,7 +17,7 @@ class ClientController extends Controller
     {
         $clients = Client::get();
         $navElements = array(array("href" => "/", "name" => "Accueil"));
-        return view('clients\index',compact('clients','navElements'));
+        return view('clients.index',compact('clients','navElements'));
     }
 
      /**
@@ -29,7 +29,7 @@ class ClientController extends Controller
     {
         $clientInvoices = Invoice::join('clients', 'clients.ref', '=', 'invoices.ref')->where('clients.id', $id)->get(['invoices.*', 'clients.name']);
         $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
-        return view('clients\clientinvoices',compact('clientInvoices','navElements'));
+        return view('clients.clientinvoices',compact('clientInvoices','navElements'));
     }
 
     /**
@@ -64,7 +64,7 @@ class ClientController extends Controller
         $clients = Client::where('id','=', $id)->get();
         $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
         $title = $clients[0]->name;
-        return view('clients\index',compact('clients','navElements','title'));
+        return view('clients.index',compact('clients','navElements','title'));
     }
 
     /**
