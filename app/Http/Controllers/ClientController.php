@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
@@ -64,9 +65,10 @@ class ClientController extends Controller
         ]);
 
         Client::create($request->all());
+        $clients = Client::where('id','=', DB::getPdo()->lastInsertId())->get();
         $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
-
-        return view('clients.create',compact('navElements'));
+        $title = $clients[0]->name;
+        return view('clients.index',compact('clients','navElements','title'));
     }
 
     /**
