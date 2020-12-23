@@ -37,7 +37,7 @@
             <td>{{ $client->address }} | {{ $client->zipCode }} {{ $client->city }} | {{ $client->country }}</td>
             <td>{{ $client->num_tva }}</td>
             <td><a href="/clients/clientinvoices/{{ $client->id }}">{{ $client->ref }}</a></td>
-            <td><a href="#">modifier</a></td>
+            <td><a href="/clients/edit/{{ $client->id }}">modifier</a></td>
         </tr>
     @endforeach
     </tbody>
