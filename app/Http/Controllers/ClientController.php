@@ -63,7 +63,8 @@ class ClientController extends Controller
     {
         $clients = Client::where('id','=', $id)->get();
         $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
-        return view('clients\index',compact('clients','navElements'));
+        $title = $clients[0]->name;
+        return view('clients\index',compact('clients','navElements','title'));
     }
 
     /**

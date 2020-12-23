@@ -1,6 +1,11 @@
 @extends('layouts.template')
 
-@section('title','Clients')
+@if (isset($title))
+    @section('title', $title)
+@else
+    @section('title','Clients')
+@endif
+
 
 @section('nav')
     @foreach($navElements as $navElement)
