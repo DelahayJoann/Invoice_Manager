@@ -39,7 +39,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
+        return view('clients.create',compact('navElements'));
     }
 
     /**
@@ -50,7 +51,22 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate(request(),[
+            'name' => 'required|min:5|max:30',
+            'tel' => 'required|min:5|max:30',
+            'email' => 'required|min:5|max:30',
+            'address' => 'required|min:5|max:30',
+            'zipCode' => 'required|min:4|max:10',
+            'city' => 'required|min:3|max:30',
+            'country' => 'required|min:3|max:30',
+            'num_tva' => 'required|min:5|max:30',
+            'ref' => 'required|min:5|max:30'
+        ]);
+
+        Client::create($request->all());
+        $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
+
+        return view('clients.create',compact('navElements'));
     }
 
     /**

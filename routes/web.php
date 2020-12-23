@@ -25,8 +25,13 @@ Route::get('/clients',[ClientController::class,'index']);
 // Invoice index: Display all invoices
 Route::get('/invoices',[InvoiceController::class,'index']);
 
-// Client index: Display all factures for a client
+// Client invoices: Display all factures for a client
 Route::get('/clients/clientinvoices/{id}',[ClientController::class,'clientInvoices']);
 
-// Client index: Display all factures for a client
-Route::get('/clients/{id}',[ClientController::class,'show']);
+// Client chow: Display a client by id
+Route::get('/clients/show/{id}',[ClientController::class,'show']);
+
+// Client create: Display form to create client
+Route::get('/clients/create',[ClientController::class,'create']);
+
+Route::post('/clients/create',[ClientController::class,'store']);

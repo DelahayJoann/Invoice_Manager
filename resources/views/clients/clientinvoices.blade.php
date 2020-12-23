@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<h1><a href="/clients/{{$clientInvoices[0]->client_fk}}">{{$clientInvoices[0]->name}}</a></h1>
+<h1><a href="/clients/show/{{$clientInvoices[0]->client_fk}}">{{$clientInvoices[0]->name}}</a></h1>
 <table class="table">
     <thead>
         <tr>

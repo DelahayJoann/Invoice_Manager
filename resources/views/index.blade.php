@@ -11,7 +11,7 @@
                         <h3 class="card-title">Clients</h3>
                         <img src="" alt="">
                         <p class="card-text"><a href="/clients">Afficher tout les clients</a></p>
-                        <p class="card-text"><a href="">Créer un client</a></p>
+                        <p class="card-text"><a href="/clients/create">Créer un client</a></p>
                     </div>
                 </div>
             </div>

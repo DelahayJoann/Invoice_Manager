@@ -31,7 +31,7 @@
     @foreach($clients as $client)
         <tr>
             <td scope="row">{{ $client->id }}</td>
-            <td>{{ $client->name }}</td>
+            <td><a href="/clients/show/{{ $client->id }}">{{ $client->name }}</a></td>
             <td>{{ $client->tel }}</td>
             <td>{{ $client->email }}</td>
             <td>{{ $client->address }} | {{ $client->zipCode }} {{ $client->city }} | {{ $client->country }}</td>

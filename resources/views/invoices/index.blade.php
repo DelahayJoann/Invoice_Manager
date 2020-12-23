@@ -25,7 +25,7 @@
             <td>{{ $invoice->price }}</td>
             <td>{{ $invoice->tva }}</td>
             <td>{{ ($invoice->tva/100 * $invoice->price) + $invoice->price }}</td>
-            <td><a href="/clients/{{ $invoice->client_fk }}"> {{ $invoice->name }} </a></td>
+            <td><a href="/clients/show/{{ $invoice->client_fk }}"> {{ $invoice->name }} </a></td>
             <td><a href="/clients/edit/{{ $invoice->client_fk }}">modifier</a></td>
         </tr>
     @endforeach

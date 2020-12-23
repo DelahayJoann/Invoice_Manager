@@ -17,7 +17,7 @@ class InvoiceController extends Controller
     {
         $invoices = Invoice::join('clients', 'clients.id', '=', 'invoices.client_fk')->get(['invoices.*', 'clients.name']);
 
-        return view('invoices\index',compact('invoices'));
+        return view('invoices.index',compact('invoices'));
     }
 
     /**
