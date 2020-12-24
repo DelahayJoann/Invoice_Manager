@@ -50,7 +50,7 @@ class InvoiceController extends Controller
         ]);
 
         Invoice::create($request->all());
-        $invoices = Invoice::where('id','=', DB::getPdo()->lastInsertId())->get();
+        $invoices = Invoice::join('clients', 'clients.id', '=', 'invoices.client_fk')->where('invoices.id','=', DB::getPdo()->lastInsertId())->get(['invoices.*', 'clients.name']);
         $navElements = array(array("href" => "/invoices", "name" => "Liste invoices"));
         $title = $invoices[0]->name;
         return view('invoices.index',compact('invoices','navElements','title'));
