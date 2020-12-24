@@ -91,31 +91,50 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function edit(Client $client)
+    public function edit($id)
     {
-        //
+        $client = Client::findOrFail($id);
+        $navElements = array(array("href" => "/clients", "name" => "Liste clients"));
+        $title = $client->name;
+        return view('clients.edit',compact('client','navElements','title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Client  $client
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(Request $request, $id)
     {
-        //
+        $this->validate(request(),[
+            'name' => 'required|min:5|max:30',
+            'tel' => 'required|min:5|max:30',
+            'email' => 'required|min:5|max:30',
+            'address' => 'required|min:5|max:30',
+            'zipCode' => 'required|min:4|max:10',
+            'city' => 'required|min:3|max:30',
+            'country' => 'required|min:3|max:30',
+            'num_tva' => 'required|min:5|max:30',
+            'ref' => 'required|min:5|max:30'
+        ]);
+
+        Client::find($id)->update($request->all());
+
+        return redirect('/clients/show/'.$id);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Client  $client
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Client $client)
+    public function destroy($id)
     {
-        //
+        Invoice::where("client_fk", $id)->delete();
+        Client::where("id", $id)->delete();
+        return redirect('/clients');
     }
 }

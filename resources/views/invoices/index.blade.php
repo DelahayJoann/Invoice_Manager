@@ -1,6 +1,17 @@
 @extends('layouts.template')
 
-@section('title','Invoices')
+@if (isset($title))
+    @section('title', $title)
+@else
+    @section('title','Invoices')
+@endif
+
+
+@section('nav')
+    @foreach($navElements as $navElement)
+        <a href="{{$navElement['href']}}">{{$navElement['name']}}</a>
+    @endforeach
+@endsection
 
 @section('content')
 <table class="table">
@@ -26,7 +37,10 @@
             <td>{{ $invoice->tva }}</td>
             <td>{{ ($invoice->tva/100 * $invoice->price) + $invoice->price }}</td>
             <td><a href="/clients/show/{{ $invoice->client_fk }}"> {{ $invoice->name }} </a></td>
-            <td><a href="/clients/edit/{{ $invoice->client_fk }}">modifier</a></td>
+            <td>
+                <a href="/invoices/edit/{{ $invoice->id }}">modifier</a><br />
+                <a href="/invoices/destroy/{{ $invoice->id }}">supprimer</a>
+            </td>
         </tr>
     @endforeach
     </tbody>

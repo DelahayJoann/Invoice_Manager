@@ -25,13 +25,42 @@ Route::get('/clients',[ClientController::class,'index']);
 // Invoice index: Display all invoices
 Route::get('/invoices',[InvoiceController::class,'index']);
 
+
+
 // Client invoices: Display all factures for a client
 Route::get('/clients/clientinvoices/{id}',[ClientController::class,'clientInvoices']);
 
-// Client chow: Display a client by id
+// Client show: Display a client by id
 Route::get('/clients/show/{id}',[ClientController::class,'show']);
 
 // Client create: Display form to create client
 Route::get('/clients/create',[ClientController::class,'create']);
 
 Route::post('/clients/create',[ClientController::class,'store']);
+
+Route::get('/clients/edit/{id}',[ClientController::class,'edit']);
+Route::patch('/clients/edit/{id}',[ClientController::class,'update']);
+
+Route::get('/clients/destroy/{id}',[ClientController::class,'destroy']);
+
+
+
+// Invoice show: Display a invoice by id
+Route::get('/invoices/show/{id}',[InvoiceController::class,'show']);
+
+// Invoice create: Display form to create invoice
+Route::get('/invoices/create',[InvoiceController::class,'create']);
+
+Route::post('/invoices/create',[InvoiceController::class,'store']);
+
+Route::get('/invoices/edit/{id}',[InvoiceController::class,'edit']);
+Route::patch('/invoices/edit/{id}',[InvoiceController::class,'update']);
+
+Route::get('/invoices/destroy/{id}',[InvoiceController::class,'destroy']);
+
+
+
+Route::get('/clear', function() {
+    Artisan::call('optimize:clear');
+    dd("Cache Clear All");
+});

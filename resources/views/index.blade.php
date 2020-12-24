@@ -20,8 +20,8 @@
                     <div class="card-body">
                         <h3 class="card-title">Invoices</h3>
                         <img src="" alt="">
-                        <p class="card-text"><a href="">Afficher tout les factures</a></p>
-                        <p class="card-text"><a href="">Créer une facture</a></p>
+                        <p class="card-text"><a href="/invoices">Afficher tout les factures</a></p>
+                        <p class="card-text"><a href="/invoices/create">Créer une facture</a></p>
                     </div>
                 </div>
             </div>
