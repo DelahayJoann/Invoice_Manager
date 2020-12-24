@@ -14,6 +14,7 @@
 @endsection
 
 @section('content')
+<a href="/clients/create/">Créer</a>
 <table class="table">
     <thead>
         <tr>
