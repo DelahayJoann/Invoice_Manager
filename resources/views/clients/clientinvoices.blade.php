@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+@if(isset($clientInvoices[0]->name))
 <h1><a href="/clients/show/{{$clientInvoices[0]->client_fk}}">{{$clientInvoices[0]->name}}</a></h1>
 <table class="table">
     <thead>
@@ -36,4 +37,5 @@
     @endforeach
     </tbody>
 </table>
+@endif
 @endsection
